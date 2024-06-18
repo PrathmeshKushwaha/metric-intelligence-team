@@ -123,14 +123,16 @@ class LoginApp:
         #     self.show_loading_page(username)
         # else:
         #     messagebox.showerror("Error", "Invalid username or password.")
-        l = be.userinfo(username)
+        l = be.login(username)
         self.user = l
-        if l[0]:
-            if password == l[0][2]:
+        if l:
+            if password == l[2]:
                 messagebox.showinfo("Success", "Login Successful!")
                 self.show_loading_page()
             else:
-                messagebox.showerror("Error", "Invalid username or password.")
+                messagebox.showerror("Error", "Invalid password.")
+        else:
+            messagebox.showerror("Error", "Invalid username.")
 
     def show_loading_page(self):
         # Destroy the main window
@@ -170,6 +172,8 @@ class LoginApp:
     def show_dashboard(self, loading_window):
         loading_window.destroy()
 
+        #getting student info
+        information = be.info(self.user[1])
         # Create a new window for the dashboard
         dashboard_window = tk.Tk()
         dashboard_window.title("Dashboard")
@@ -192,7 +196,7 @@ class LoginApp:
         user_image_label.pack(side='right', padx=20)
 
         # User name label
-        user_name_label = tk.Label(top_frame, text=self.user[0][4], font=("Helvetica", 16), bg='#F5F5F5')
+        user_name_label = tk.Label(top_frame, text=information[1], font=("Helvetica", 16), bg='#F5F5F5')
         user_name_label.pack(side='right')
 
         # Dashboard content frame
@@ -246,12 +250,12 @@ class LoginApp:
         profile_label.pack(pady=10)
 
         profile_info = {
-            "Name": username,
-            "Semester": "6th",
-            "Year": "2024",
-            "Course": "B.Tech CSE (AI & Data Engineering)",
-            "Roll No.": "123456",
-            "Registration Number": "9876543210"
+            "Name": information[1],
+            "Semester": information[4],
+            "Year": information[3],
+            "Course": information[2],
+            "Roll No.": information[5],
+            "Registration Number": information[7]
         }
 
         for key, value in profile_info.items():
