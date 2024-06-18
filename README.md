@@ -17,14 +17,15 @@ To run the project on your local machine, follow these steps:
 
 -> Clone the repository:
 - git clone https://github.com/PrathmeshKushwaha/metric-intelligence.git
-- cd metric-intelligence
+- cd metric-intelligence-team
 
 -> Run the Main Program:
-- Navigate to the directory containing the main script
-- cd backend 
+- Navigate to the file main.py
+- run the file 
 
 -> Start the main program:
--python main.py
+- Start the environment with command:- ```env\Scripts\Activate.ps1```
+- after activating the environment run the file with command:- ```python main.py```
 
 📊 Additional Information
 - Power BI Reports: Explore insightful visualizations in the database.
