@@ -15,7 +15,7 @@ class EntryWithPlaceholder(tk.Entry):
         self.placeholder = placeholder
         self.placeholder_color = "grey"
         self.default_fg_color = self["fg"]
-
+        self.user = []
         self.bind("<FocusIn>", self._on_focus_in)
         self.bind("<FocusOut>", self._on_focus_out)
 
@@ -124,14 +124,15 @@ class LoginApp:
         # else:
         #     messagebox.showerror("Error", "Invalid username or password.")
         l = be.userinfo(username)
+        self.user = l
         if l[0]:
-            if password == l[0][1]:
+            if password == l[0][2]:
                 messagebox.showinfo("Success", "Login Successful!")
-                self.show_loading_page(username)
+                self.show_loading_page()
             else:
                 messagebox.showerror("Error", "Invalid username or password.")
 
-    def show_loading_page(self, username):
+    def show_loading_page(self):
         # Destroy the main window
         self.root.destroy()
 
@@ -155,7 +156,7 @@ class LoginApp:
 
         def animate():
             spinner_label.config(text=next(spinner))
-            loading_window.after(100, animate)
+            loading_window.after(50, animate)
 
         animate()
 
@@ -164,23 +165,23 @@ class LoginApp:
         warning_label.pack(pady=20)
 
         # Show the loading page for 3 seconds before transitioning to the dashboard
-        loading_window.after(3000, lambda: self.show_dashboard(loading_window, username))
+        loading_window.after(2500, lambda: self.show_dashboard(loading_window))
 
-    def show_dashboard(self, loading_window, username):
+    def show_dashboard(self, loading_window):
         loading_window.destroy()
 
         # Create a new window for the dashboard
         dashboard_window = tk.Tk()
         dashboard_window.title("Dashboard")
         dashboard_window.geometry("1366x768")
-        dashboard_window.configure(bg='white')
+        dashboard_window.configure(bg='#F7F9F2')
 
         # Create top frame for user info and navigation
         top_frame = tk.Frame(dashboard_window, bg='#F5F5F5', height=100)
         top_frame.pack(fill='x')
 
         # Random text on left side of navigation bar
-        random_text_label = tk.Label(top_frame, text="Welcome to FutureNse!", font=("Helvetica", 16), bg='#F5F5F5')
+        random_text_label = tk.Label(top_frame, text="Welcome to Futurense!", font=("Helvetica", 16), bg='#F5F5F5')
         random_text_label.pack(side='left', padx=20)
 
         # User profile image placeholder
@@ -191,7 +192,7 @@ class LoginApp:
         user_image_label.pack(side='right', padx=20)
 
         # User name label
-        user_name_label = tk.Label(top_frame, text=username, font=("Helvetica", 16), bg='#F5F5F5')
+        user_name_label = tk.Label(top_frame, text=self.user[0][4], font=("Helvetica", 16), bg='#F5F5F5')
         user_name_label.pack(side='right')
 
         # Dashboard content frame
@@ -204,10 +205,10 @@ class LoginApp:
 
         # Paths for course images
         course_images = [
-            r"C:\Users\ASUS\Desktop\Database Design  and Modelling  (SQL).png",  # Replace with actual paths
-            r"C:\Users\ASUS\Desktop\MicrosoftTeams-image (1).jpg",
-            r"C:\Users\ASUS\Desktop\Data Structures   Algorithms.png",
-            r"C:\Users\ASUS\Desktop\Data  Communication  and Computer  Networks.png"
+            r"images/c1.jpeg",  # Replace with actual paths
+            r"images/c2.jpeg",
+            r"images/c3.jpeg",
+            r"images/c4.jpeg"
         ]
 
         # Create grid for courses

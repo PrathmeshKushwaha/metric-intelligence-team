@@ -1,12 +1,12 @@
 import sqlite3 as sql
 
-conn = sql.connect("futurense.db")
+conn = sql.connect("database/futurense.db")
 cur = conn.cursor()
 
 def userinfo(username):
-    cur.execute("SELECT username,password_hash FROM User WHERE username = (?)",(username,))
+    cur.execute("SELECT * FROM User WHERE username = (?)",(username,))
     value = cur.fetchall()
     return value
 
 # s = input()
-# print(checkuser(s)[0])
+# print(userinfo(s)[0])
