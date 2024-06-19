@@ -2,6 +2,10 @@ import sqlite3
 conn = sqlite3.connect('futurense.db')
 cursor = conn.cursor()
 
+
+
+
+
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS User (
     user_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -14,6 +18,11 @@ CREATE TABLE IF NOT EXISTS User (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )
 ''')
+
+
+
+
+
 
 users_data = [
     ('arpita0507', 'password1', 'arpita@example.com', 'Arpita', 'M', 'student'),
@@ -28,6 +37,10 @@ users_data = [
     ('sunita_rao', 'hashed_password10', 'sunita.rao@example.com', 'Sunita', 'Rao', 'admin')
 ]
 
+
+
+
+
 for user in users_data:
     try:
         cursor.execute('''
@@ -36,6 +49,9 @@ for user in users_data:
         ''', user)
     except sqlite3.IntegrityError as e:
         print(f"Error inserting {user}: {e}")
+
+
+
 
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS Courses (
@@ -47,6 +63,11 @@ CREATE TABLE IF NOT EXISTS Courses (
     FOREIGN KEY (instructor_id) REFERENCES User(user_id)
 )
 ''')
+
+
+
+
+
 
 courses_data = [
     ('Data Communication and Computer Networks', 'Introduction to networking principles', 7),
@@ -81,6 +102,9 @@ enrollment_data = [
     (8, 3), (9, 1), (10, 4)
 ]
 
+
+
+
 for enrollment in enrollment_data:
     try:
         cursor.execute('''
@@ -101,6 +125,11 @@ CREATE TABLE IF NOT EXISTS Assignments (
     FOREIGN KEY (course_id) REFERENCES Courses(course_id)
 )
 ''')
+
+
+
+
+
 
 assignments_data = [
     (1, 'Networking Assignment 1', 'Complete the given networking tasks', '2024-07-01'),
@@ -150,6 +179,10 @@ for grade in grades_data:
     except sqlite3.IntegrityError as e:
         print(f"Error inserting {grade}: {e}")
 
+
+
+
+
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS Messages (
     message_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -163,12 +196,19 @@ CREATE TABLE IF NOT EXISTS Messages (
 )
 ''')
 
+
+
+
 messages_data = [
     (1, 7, 'Question about networking', 'I have a question about the OSI model.', '2024-06-10 10:00:00'),
     (2, 8, 'Help with SQL', 'I need help with SQL queries.', '2024-06-11 11:00:00'),
     (3, 7, 'Doubt in data structures', 'I have a doubt in linked lists.', '2024-06-12 12:00:00'),
     (4, 8, 'Clarification needed', 'I need clarification on AI concepts.', '2024-06-13 13:00:00')
 ]
+
+
+
+
 
 for message in messages_data:
     try:
@@ -178,6 +218,9 @@ for message in messages_data:
         ''', message)
     except sqlite3.IntegrityError as e:
         print(f"Error inserting {message}: {e}")
+
+
+
 
 conn.commit()
 conn.close()
