@@ -41,7 +41,13 @@ To run the project on your local machine, follow these steps:
 
 
 
+
 📊 Additional Information
 - Power BI Reports: Explore insightful visualizations in the database.
 - ER Diagram: View the Entity-Relationship diagram for better understanding of the database structure.
+
+
+
+
+
 
