@@ -19,20 +19,33 @@ class EntryWithPlaceholder(tk.Entry):
         self.bind("<FocusIn>", self._on_focus_in)
         self.bind("<FocusOut>", self._on_focus_out)
 
+       
+       
         self.put_placeholder()
 
+   
     def _on_focus_in(self, event):
+   
         if self.get() == self.placeholder:
+   
             self.delete(0, tk.END)
+   
             self.config(fg=self.default_fg_color)
 
+   
     def _on_focus_out(self, event):
+   
         if not self.get():
+   
             self.put_placeholder()
 
+    
     def put_placeholder(self):
+    
         self.insert(0, self.placeholder)
+    
         self.config(fg=self.placeholder_color)
+
 
 class LoginApp:
     def __init__(self, root, bg_image_path, form_image_path):
