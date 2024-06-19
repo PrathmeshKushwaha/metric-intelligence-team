@@ -13,9 +13,9 @@ class EntryWithPlaceholder(tk.Entry):
     def __init__(self, master=None, placeholder="", *args, **kwargs):
         super().__init__(master, *args, **kwargs)
         self.placeholder = placeholder
-        self.placeholder_color = "grey"
-        self.default_fg_color = self["fg"]
-        self.user = []
+        self.placeholder_color =  "grey"
+        self.default_fg_color =  self["fg"]
+        self.user =  []
         self.bind("<FocusIn>", self._on_focus_in)
         self.bind("<FocusOut>", self._on_focus_out)
 
