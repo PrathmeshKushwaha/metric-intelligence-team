@@ -29,7 +29,7 @@ users_data = [
     ('madhav99', 'password2', 'madhav@example.com', 'Madhav', 'H', 'student'),
     ('adwaid90', 'password3', 'adwaid@example.com', 'Adwaid', 'K', 'student'),
     ('prathmesh67', 'password4', 'prathmesh@example.com', 'Prathmesh', 'K', 'student'),
-    ('gurkirat', 'password5', 'gurkirat@example.com', 'Gurkirat', 'S', 'student'),
+    ('Gurkirat', 'password5', 'gurkirat@example.com', 'Gurkirat', 'S', 'student'),
     ('harsha', 'password6', 'harsha@example.com', 'Harshvardhan', 'R', 'student'),
     ('rajiv_mehta', 'hashed_password7', 'rajiv.mehta@example.com', 'Rajiv', 'Mehta', 'instructor'),
     ('priya_agrawal', 'hashed_password8', 'priya.agrawal@example.com', 'Priya', 'Agrawal', 'instructor'),
