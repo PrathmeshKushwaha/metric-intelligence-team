@@ -316,11 +316,9 @@ class LoginApp:
     
         root = tk.Tk()
     
-    
         app = LoginApp(root, bg_image_path, form_image_path)
     
         root.mainloop()
-
 
 
 if __name__ == "__main__":
