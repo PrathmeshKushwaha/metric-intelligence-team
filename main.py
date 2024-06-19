@@ -1,22 +1,35 @@
 import tkinter as tk
+
 from tkinter import ttk, messagebox
+
 from PIL import Image, ImageTk
+
 import os
+
 from itertools import cycle
+
 import backend as be
 
 # Predefined username and password pairs
-USERNAMES = ['user1', 'user2', 'user3', 'user4', 'user5']
-PASSWORDS = ['password1', 'password2', 'password3', 'password4', 'password5']
+USERNAMES =   ['user1', 'user2', 'user3', 'user4', 'user5']
+PASSWORDS =  ['password1', 'password2', 'password3', 'password4', 'password5']
 
 class EntryWithPlaceholder(tk.Entry):
-    def __init__(self, master=None, placeholder="", *args, **kwargs):
+    
+    def __init__(self,  master=None,  placeholder="",  *args,   **kwargs):
+    
         super().__init__(master, *args, **kwargs)
+    
         self.placeholder = placeholder
+    
         self.placeholder_color =  "grey"
+    
         self.default_fg_color =  self["fg"]
+    
         self.user =  []
+    
         self.bind("<FocusIn>", self._on_focus_in)
+    
         self.bind("<FocusOut>", self._on_focus_out)
 
        
@@ -296,16 +309,30 @@ class LoginApp:
         back_to_login_button = ttk.Button(buttons_frame, text="Back to Login Page", style="TButton", command=lambda: self.back_to_login(dashboard_window))
         back_to_login_button.pack(pady=10)
 
+    
     def back_to_login(self, current_window):
+    
         current_window.destroy()
+    
         root = tk.Tk()
+    
+    
         app = LoginApp(root, bg_image_path, form_image_path)
+    
         root.mainloop()
 
+
+
 if __name__ == "__main__":
+
     # Provide the correct paths to your images
+
     bg_image_path = r"images/main.png"  # Correct the file path
+
     form_image_path = r"images/c6.jpeg"  # Provide the correct path to the form image
+
     root = tk.Tk()
+
     app = LoginApp(root, bg_image_path, form_image_path)
+
     root.mainloop()
