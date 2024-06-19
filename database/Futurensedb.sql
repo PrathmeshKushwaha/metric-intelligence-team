@@ -2,7 +2,6 @@ create database futurense;
 use futurense;
 
 
-
 create table Student(
 S_id int Primary key,
 S_name varchar(30) not null,
@@ -23,19 +22,17 @@ foreign key(S_id) references Student(S_id),
 Password varchar(30) not null);
 
 
-
 create table Teachers(
 T_id int primary key,
 T_name varchar(30) not null);
 
 
-
 create table Courses(
-
 C_id int primary key,
 C_name varchar(50) not null unique,
 T_id int,
 foreign key(T_id) references Teachers(T_id));
+
 
 create table Enrollement(
 E_id int primary key,
@@ -43,7 +40,6 @@ C_id int,
 S_id int,
 foreign key(S_id) references Student(S_id),
 foreign key(C_id) references Courses(C_id));
-
 
 
 create table LearningSpace(
@@ -54,9 +50,6 @@ foreign key(C_id) references Courses(C_id),
 Filedata varchar(50) not null);
 
 
-
-
-
 create table Message(
 M_id int primary key,
 S_id int,
@@ -65,7 +58,6 @@ T_id int,
 foreign key(T_id) references Teachers(T_id),
 Msg TEXT NOT NULL ,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
-
 
 
 create table Assignment(
@@ -87,14 +79,12 @@ INSERT INTO Student (S_id, S_name, Degree, Batch, Ongoingsem, Rollno, Section, P
 
 
 
-
 INSERT INTO Login (L_id, S_id, Password) VALUES
 (12315135, 991, 'abcde'),
 (12315136, 992, 'abcdf'),
 (12315137, 993, 'abcdg'),
 (12315138, 994, 'abcdh'),
 (12315139, 995, 'abcdi');
-
 
 
 
@@ -105,15 +95,11 @@ INSERT INTO Teachers (T_id, T_name) VALUES
 
 
 
-
 INSERT INTO Courses (C_id, C_name, T_id) VALUES
 (771, 'DSA', 111),
 (772, 'Data communication', 113),
 (773, 'Mathematics', 112),
 (774, 'DBMS', 111);
-
-
-
 
 
 
@@ -154,7 +140,6 @@ INSERT INTO LearningSpace (Ls_id, Title, C_id, Filedata) VALUES
 
 
 
-
 INSERT INTO Message (M_id, S_id, T_id, Msg)
 VALUES
     (555, 992, 111, 'hhhhhcsdn mi jndsnck n ononnds n'),
@@ -165,9 +150,6 @@ VALUES
 
 
 
-
-
-
 INSERT INTO Assignment (A_id, A_name, C_id, Filedata)
 VALUES
     (221, 'DSA-1', 771,'D:/pdf/1.pdf' ),
@@ -175,13 +157,4 @@ VALUES
     (223, 'Dsa-2', 771, "D:/pdf/3.pdf"),
     (224, 'Dsa-3', 771, "D:/pdf/4.pdf"),
     (225, 'DBMS', 774, "D:/pdf/5.pdf");
-
-
-
-
-
-
-
-
-
 
