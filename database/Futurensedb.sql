@@ -66,6 +66,7 @@ INSERT INTO Student (S_id, S_name, Degree, Batch, Ongoingsem, Rollno, Section, P
 (993, 'Madhav', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE07', 'K23FE', '6284844542', 'madhav0001@gmail.com', 'Jalandhar'),
 (994, 'Prathamesh', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE52', 'K23FE', '7814317944', 'prathamesh6767@gmail.com', 'Amritsar'),
 (995, 'Adwaid', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE32', 'K23FE', '9478592165', 'Adwaid995@gmail.com', 'Patiala');
+(996, 'Arpita', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE45', 'K23FE', '9478545152', 'Arpita345@gmail.com', 'Sonipath');
 
 
 INSERT INTO Login (L_id, S_id, Password) VALUES
