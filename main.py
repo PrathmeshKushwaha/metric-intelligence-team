@@ -12,6 +12,7 @@ import backend as be
 
 # Predefined username and password pairs
 USERNAMES =   ['user1', 'user2', 'user3', 'user4', 'user5']
+
 PASSWORDS =  ['password1', 'password2', 'password3', 'password4', 'password5']
 
 class EntryWithPlaceholder(tk.Entry):
@@ -149,6 +150,8 @@ class LoginApp:
         #     self.show_loading_page(username)
         # else:
         #     messagebox.showerror("Error", "Invalid username or password.")
+       
+       
         l = be.login(username)
         self.user = l
         if l:
@@ -240,6 +243,7 @@ class LoginApp:
             r"images/c3.jpeg",
             r"images/c4.jpeg"
         ]
+
 
         # Create grid for courses
         for i in range(2):
