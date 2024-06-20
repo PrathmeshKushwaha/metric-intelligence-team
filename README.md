@@ -18,7 +18,6 @@
 - Database: Includes the database schema, ER diagram, and Power BI reports for data visualization.
 
 
-
 🚀 How to Run
 To run the project on your local machine, follow these steps:
 
