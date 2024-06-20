@@ -18,6 +18,7 @@
 - Database: Includes the database schema, ER diagram, and Power BI reports for data visualization.
 
 
+
 🚀 How to Run
 To run the project on your local machine, follow these steps:
 
@@ -37,7 +38,6 @@ To run the project on your local machine, follow these steps:
 -> Start the main program:
 - Start the environment with command:- ```env\Scripts\Activate.ps1```
 - after activating the environment run the file with command:- ```python main.py```
-
 
 
 
