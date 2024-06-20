@@ -244,7 +244,7 @@ class LoginApp:
             r"images/c4.jpeg"
         ]
 
-
+ 
         # Create grid for courses
         for i in range(2):
             for j in range(2):
