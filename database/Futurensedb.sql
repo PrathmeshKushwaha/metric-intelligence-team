@@ -2,6 +2,7 @@ create database futurense;
 use futurense;
 
 
+
 create table Student(
 S_id int Primary key,
 S_name varchar(30) not null,
@@ -15,11 +16,15 @@ Email varchar(50) unique not null ,
 Address varchar(30) not null);
 
 
+
+
 create table Login(
 L_id int primary key,
 S_id int,
 foreign key(S_id) references Student(S_id),
 Password varchar(30) not null);
+
+
 
 
 create table Teachers(
@@ -58,6 +63,8 @@ T_id int,
 foreign key(T_id) references Teachers(T_id),
 Msg TEXT NOT NULL ,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+
 
 
 create table Assignment(
