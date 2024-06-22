@@ -100,6 +100,21 @@ class LoginApp:
         else:
             print(f"Image not found: {path}")
             return None
+    
+    def toggle_notifications(self):
+        if self.notification_popup is None:
+            self.notification_popup = tk.Toplevel(self.root)
+            self.notification_popup.title("Notifications")
+            self.notification_popup.geometry("300x200")
+            label = tk.Label(self.notification_popup, text="This is a notification popup")
+            label.pack(pady=20)
+        else:
+            if self.notification_popup.state() == "withdrawn":
+                self.notification_popup.deiconify()
+            else:
+                self.notification_popup.withdraw()
+
+
 
     def create_login_form(self):
         form_frame = tk.Frame(self.right_frame, bg='white', padx=20, pady=20)
@@ -316,11 +331,6 @@ class LoginApp:
         back_to_login_button = ttk.Button(buttons_frame, text="Back to Login Page", style="TButton", command=lambda: self.back_to_login(dashboard_window))
         back_to_login_button.pack(pady=10)
 
-    def toggle_notifications(self):
-        if self.notification_popup.state() == "withdrawn":
-            self.notification_popup.deiconify()
-        else:
-            self.notification_popup.withdraw()
     
     def back_to_login(self, current_window):
     
