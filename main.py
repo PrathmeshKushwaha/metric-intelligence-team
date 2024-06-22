@@ -10,9 +10,7 @@ from itertools import cycle
 
 import backend as be
 
-# Predefined username and password pairs
-USERNAMES =   ['user1', 'user2', 'user3', 'user4', 'user5']
-PASSWORDS =  ['password1', 'password2', 'password3', 'password4', 'password5']
+import coursesection as cs
 
 class EntryWithPlaceholder(tk.Entry):
     
@@ -142,13 +140,6 @@ class LoginApp:
     def check_credentials(self):
         username = self.username_entry.get()
         password = self.password_entry.get()
-
-        # Check if username and password are in predefined list
-        # if username in USERNAMES and password == PASSWORDS[USERNAMES.index(username)]:
-        #     messagebox.showinfo("Success", "Login Successful!")
-        #     self.show_loading_page(username)
-        # else:
-        #     messagebox.showerror("Error", "Invalid username or password.")
         l = be.login(username)
         self.user = l
         if l:
@@ -215,7 +206,7 @@ class LoginApp:
         random_text_label.pack(side='left', padx=20)
 
         # User profile image placeholder
-        user_image_path = r"C:\Users\Dell\Desktop\userimage.png"  # Replace with actual path
+        user_image_path = r""  # Replace with actual path
         user_image = self.load_image(user_image_path, (50, 50))
         user_image_label = tk.Label(top_frame, image=user_image, bg='#F5F5F5')
         user_image_label.image = user_image  # Keep a reference
@@ -233,36 +224,37 @@ class LoginApp:
         left_courses_frame = tk.Frame(content_frame, bg='white', width=683, padx=20, pady=20)
         left_courses_frame.pack(side='left', fill='both', expand=True)
 
-        # Paths for course images
-        course_images = [
-            r"images/c1.jpeg",  # Replace with actual paths
-            r"images/c2.jpeg",
-            r"images/c3.jpeg",
-            r"images/c4.jpeg"
-        ]
-
-        # Create grid for courses
-        for i in range(2):
+        courses = be.coursenroll(self.user[1])
+        i = 0
+        while True:
+            
             for j in range(2):
                 course_frame = tk.Frame(left_courses_frame, bg='white', bd=1, relief='solid', width=500, height=500)
-
                 course_frame.grid(row=i, column=j, padx=75, pady=50, sticky="nsew")
 
-                # Load and display course cover image
-                course_image_path = course_images[i*2 + j]
+                cd = be.coursedetail(courses.pop())
+                print(courses)
+                
+
+                course_image_path = fr"{cd[3]}"
                 course_cover_image = self.load_image(course_image_path, (300, 150))
                 if course_cover_image:
                     course_cover_label = tk.Label(course_frame, image=course_cover_image, bg='white')
                     course_cover_label.image = course_cover_image  # Keep a reference
                     course_cover_label.pack(pady=(0, 5))
-
+                
                 # Course title label
-                course_title_label = tk.Label(course_frame, text=f"Course {i*2 + j + 1}", font=("Helvetica", 12), bg='white')
+                course_title_label = tk.Label(course_frame, text=f"{cd[1]}", font=("Helvetica", 12), bg='white')
                 course_title_label.pack()
 
                 # Get started button
-                get_started_button = ttk.Button(course_frame, text="Get started", style="TButton")
+                get_started_button = tk.Button(course_frame, text="Get started", command=lambda: cs.create_dashboard(information[1],cd[1]))
                 get_started_button.pack(pady=(5, 0))
+                if len(courses) == 0:
+                    break
+            i += 1
+            if len(courses) == 0:
+                break
 
         # Right portion for profile information, events, and navigation
         right_profile_frame = tk.Frame(content_frame, bg='grey', width=250)

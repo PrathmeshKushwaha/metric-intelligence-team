@@ -33,6 +33,8 @@ C_name varchar(50) not null unique,
 T_id int,
 foreign key(T_id) references Teachers(T_id));
 
+alter table Courses
+add column image_path varchar(50);
 
 create table Enrollement(
 E_id int primary key,
@@ -75,7 +77,8 @@ INSERT INTO Student (S_id, S_name, Degree, Batch, Ongoingsem, Rollno, Section, P
 (993, 'Madhav', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE07', 'K23FE', '6284844542', 'madhav0001@gmail.com', 'Jalandhar'),
 (994, 'Prathamesh', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE52', 'K23FE', '7814317944', 'prathamesh6767@gmail.com', 'Amritsar'),
 (995, 'Adwaid', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE32', 'K23FE', '9478592165', 'Adwaid995@gmail.com', 'Patiala');
-(996, 'Arpita', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE45', 'K23FE', '9478545152', 'Arpita345@gmail.com', 'Sonipath');
+
+INSERT INTO Student VALUES (996, 'Arpita', 'Btech(Cse) AI and DE', 2023, 3, 'RK23FE45', 'K23FE', '9478545152', 'Arpita345@gmail.com', 'Sonipath');
 
 
 
@@ -101,7 +104,21 @@ INSERT INTO Courses (C_id, C_name, T_id) VALUES
 (773, 'Mathematics', 112),
 (774, 'DBMS', 111);
 
+update Courses
+set image_path = "images/c2.jpeg"
+where C_id = 774;
 
+update Courses
+set image_path = "images/c1.jpeg"
+where C_id = 773;
+
+update Courses
+set image_path = "images/c3.jpeg"
+where C_id = 771;
+
+update Courses
+set image_path = "images/c4.jpeg"
+where C_id = 772;
 
 INSERT INTO Enrollement (E_id, S_id, C_id) VALUES
 (1001, 991, 771),
@@ -125,8 +142,22 @@ INSERT INTO Enrollement (E_id, S_id, C_id) VALUES
 (1019, 994, 774),
 (1020, 995, 774);
 
+delete from Enrollement
+where E_id = 1002;
 
+delete from Enrollement
+where E_id = 1006;
 
+delete from Enrollement
+where E_id = 1013;
+
+delete from Enrollement
+where E_id = 1019;
+
+INSERT INTO Enrollement (E_id, S_id, C_id) VALUES
+(1002, 996,771),
+(1006,996,772),
+(1013,996,774);
 
 INSERT INTO LearningSpace (Ls_id, Title, C_id, Filedata) VALUES
 (331, 'Unit-1', 772, 'D:/pdf/1.pdf'), 

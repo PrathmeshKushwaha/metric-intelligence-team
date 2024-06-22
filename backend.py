@@ -51,8 +51,23 @@ def info(s_id):
     result = cursor.fetchone()
     return result
 
+def coursenroll(s_id):
+    query="SELECT C_id FROM Enrollement WHERE S_id = %s"
+    cursor.execute(query,(s_id,))
+    result = cursor.fetchall()
+    l = []
+    for i in range(0,len(result)):
+        l.append(result[i][0])
+    return l
+
+def coursedetail(C_id):
+    query = "SELECT * FROM Courses WHERE C_id = %s"
+    cursor.execute(query,(C_id,))
+    result = cursor.fetchone()
+    return result
+
 # s = int(input())
-# info = info(s)
+# info = coursenroll(s)
 # print(info)
 
 # cursor.close()
