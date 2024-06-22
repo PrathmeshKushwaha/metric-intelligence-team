@@ -82,14 +82,11 @@ class LoginApp:
 
         # Create login form in the right frame
         self.create_login_form()
-        self.notification_popup = tk.Toplevel(self.root)
-        self.notification_popup.title("Notifications")
-        self.notification_popup.geometry("500x350")
-        self.notification_popup.configure(bg='white')
-        self.notification_popup.withdraw()  # Hide initially
 
-        notification_label = tk.Label(self.notification_popup, text="You have new notifications!", bg='white')
-        notification_label.pack(pady=20)
+        # Bind close event of the main window
+        self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
+        print("Protocol for WM_DELETE_WINDOW is set")
+        
         
         
     def load_image(self, path, size):
@@ -100,19 +97,6 @@ class LoginApp:
         else:
             print(f"Image not found: {path}")
             return None
-    
-    def toggle_notifications(self):
-        if self.notification_popup is None:
-            self.notification_popup = tk.Toplevel(self.root)
-            self.notification_popup.title("Notifications")
-            self.notification_popup.geometry("300x200")
-            label = tk.Label(self.notification_popup, text="This is a notification popup")
-            label.pack(pady=20)
-        else:
-            if self.notification_popup.state() == "withdrawn":
-                self.notification_popup.deiconify()
-            else:
-                self.notification_popup.withdraw()
 
 
 
@@ -238,7 +222,7 @@ class LoginApp:
         
         bell_icon = tk.Label(top_frame, text="🔔", font=("Arial", 24), cursor="hand2", bg='#F5F5F5')
         bell_icon.pack(side='right', padx=20)
-        bell_icon.bind("<Button-1>", lambda e: self.toggle_notifications())
+        bell_icon.bind("<Button-1>", lambda e: self.notifications())
 
         
 
@@ -331,16 +315,24 @@ class LoginApp:
         back_to_login_button = ttk.Button(buttons_frame, text="Back to Login Page", style="TButton", command=lambda: self.back_to_login(dashboard_window))
         back_to_login_button.pack(pady=10)
 
-    def toggle_notifications(self):
-        if self.notification_popup is not None:
-            try:
-                if self.notification_popup.state() == "withdrawn":
-                    self.notification_popup.deiconify()
-                else:
-                    self.notification_popup.withdraw()
-            except tk.TclError:
-                print("Notification popup has been destroyed")
-                self.notification_popup = None
+    def notifications(self):
+        self.notification_popup = tk.Toplevel()
+        self.notification_popup.title("Notifications")
+        self.notification_popup.geometry("500x350")
+        self.notification_popup.configure(bg='white')
+
+        notification_label = tk.Label(self.notification_popup, text="You have new notifications!", bg='white')
+        notification_label.pack(pady=20)
+    
+    def on_closing(self):
+        # Called when the main window is closing
+        print("Closing main window...")
+        try:
+            if self.notification_popup is not None and self.notification_popup.winfo_exists():
+                print("Destroying new window...")
+                self.notification_popup.destroy()
+        except:
+            self.root.destroy()
     
     def back_to_login(self, current_window):
     
