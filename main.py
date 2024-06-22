@@ -82,6 +82,15 @@ class LoginApp:
 
         # Create login form in the right frame
         self.create_login_form()
+        
+        self.notification_popup = tk.Toplevel(self.root)
+        self.notification_popup.title("Notifications")
+        self.notification_popup.geometry("500x350")
+        self.notification_popup.configure(bg='white')
+        self.notification_popup.withdraw()  # Hide initially
+
+        notification_label = tk.Label(self.notification_popup, text="You have new notifications!", bg='white')
+        notification_label.pack(pady=20)
 
     def load_image(self, path, size):
         if os.path.exists(path):
@@ -211,6 +220,12 @@ class LoginApp:
         user_image_label = tk.Label(top_frame, image=user_image, bg='#F5F5F5')
         user_image_label.image = user_image  # Keep a reference
         user_image_label.pack(side='right', padx=20)
+        
+        bell_icon = tk.Label(top_frame, text="🔔", font=("Arial", 24), cursor="hand2", bg='#F5F5F5')
+        bell_icon.pack(side='right', padx=20)
+        bell_icon.bind("<Button-1>", lambda e: self.toggle_notifications())
+
+        
 
         # User name label
         user_name_label = tk.Label(top_frame, text=information[1], font=("Helvetica", 16), bg='#F5F5F5')
@@ -301,6 +316,11 @@ class LoginApp:
         back_to_login_button = ttk.Button(buttons_frame, text="Back to Login Page", style="TButton", command=lambda: self.back_to_login(dashboard_window))
         back_to_login_button.pack(pady=10)
 
+    def toggle_notifications(self):
+        if self.notification_popup.state() == "withdrawn":
+            self.notification_popup.deiconify()
+        else:
+            self.notification_popup.withdraw()
     
     def back_to_login(self, current_window):
     
