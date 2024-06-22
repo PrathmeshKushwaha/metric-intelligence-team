@@ -82,7 +82,6 @@ class LoginApp:
 
         # Create login form in the right frame
         self.create_login_form()
-        
         self.notification_popup = tk.Toplevel(self.root)
         self.notification_popup.title("Notifications")
         self.notification_popup.geometry("500x350")
@@ -91,7 +90,8 @@ class LoginApp:
 
         notification_label = tk.Label(self.notification_popup, text="You have new notifications!", bg='white')
         notification_label.pack(pady=20)
-
+        
+        
     def load_image(self, path, size):
         if os.path.exists(path):
             image = Image.open(path)
@@ -317,10 +317,15 @@ class LoginApp:
         back_to_login_button.pack(pady=10)
 
     def toggle_notifications(self):
-        if self.notification_popup.state() == "withdrawn":
-            self.notification_popup.deiconify()
-        else:
-            self.notification_popup.withdraw()
+        if self.notification_popup is not None:
+            try:
+                if self.notification_popup.state() == "withdrawn":
+                    self.notification_popup.deiconify()
+                else:
+                    self.notification_popup.withdraw()
+            except tk.TclError:
+                print("Notification popup has been destroyed")
+                self.notification_popup = None
     
     def back_to_login(self, current_window):
     
