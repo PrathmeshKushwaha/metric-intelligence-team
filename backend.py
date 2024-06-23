@@ -82,9 +82,15 @@ def get_message(s_id):
     result = cursor.fetchall()
     return result
 
+def fetch_grades(s_id):
+    query = "SELECT * FROM Grades WHERE S_id = %s"
+    cursor.execute(query, (s_id,))
+    result = cursor.fetchall()
+    return result 
+
 
 # s = int(input())
-# info = get_message(s)
+# info = fetch_grades(s)
 # print(info)
 
 # cursor.close()

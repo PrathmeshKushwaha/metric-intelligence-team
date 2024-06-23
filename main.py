@@ -315,6 +315,9 @@ class LoginApp:
         back_to_login_button = ttk.Button(buttons_frame, text="Back to Login Page", style="TButton", command=lambda: self.back_to_login(dashboard_window))
         back_to_login_button.pack(pady=10)
 
+        grade_button = ttk.Button(buttons_frame, text="Grade", style="TButton", command=self.grades)
+        grade_button.pack(pady=10)
+
     def notifications(self):
         self.notification_popup = tk.Toplevel()
         self.notification_popup.title("Notifications")
@@ -340,7 +343,6 @@ class LoginApp:
         canvas.create_window((0, 0), window=frame, anchor="nw")
         print(self.user[1])
         mess = be.get_message(self.user[1])
-        print(mess)
         if mess == []:
             notification_label = tk.Label(canvas, text="You have no notifications!", bg='white')
             notification_label.pack(pady=20)
@@ -372,44 +374,32 @@ class LoginApp:
         message_label.pack(padx=5, pady=10)
     
     def grades(self):
-        gwin= tk.Tk()
+        gwin= tk.Toplevel()
         gwin.title('Grade Page')
         gwin.geometry('500x400')
 
-        f1 = tk.Frame(root)
+        headers = ['Course Name', 'Grade']
+        for i, header in enumerate(headers):
+            header_label = tk.Label(gwin, text=header, font=('Helvetica', 12, 'bold'))
+            header_label.grid(row=0, column=i, padx=10, pady=10)
 
-        name_label = tk.Label(f1, text='Name', font=('Arial', 12))
-        name_label.pack(side='left', padx=10)
-
-        name_entry = tk.Entry(f1, textvariable=name, width=30)
-        name_entry.pack(side='right')
-
-        f2 = tk.Frame(root)
-        f2.pack(pady=10)
-
-        subject_label = tk.Label(f2, text='Subject', font=('Arial', 12))
-        subject_label.pack(side='left', padx=10)
-
-        subject_entry = tk.Entry(f2, textvariable=subject, width=30)
-        subject_entry.pack(side='right')
-
-        f3 = tk.Frame(root)
-        f3.pack(pady=10)
-
-        grade_label = tk.Label(f3, text='Grade', font=('Arial', 12))
-        grade_label.pack(side='left', padx=10)
-
-        grade_entry = tk.Entry(f3, textvariable=grade, width=30)
-        grade_entry.pack(side='right')
-
-        submit_button = tk.Button(root, text='Submit', command=display_data, font=('Arial', 12))
-        submit_button.pack(pady=20)
-
-        bottom_frame = tk.Frame(root)
-        bottom_frame.pack(side='bottom', fill='x')
-
-        bottom_button = tk.Button(bottom_frame, text='Show All Data', bg='white', fg='black', font=('Arial', 12), command=show_all_data)
-        bottom_button.pack(side='right', padx=10, pady=10)
+        g = be.fetch_grades(self.user[1])
+        grades = []
+        for i in g:
+            print(i)
+            grade = i[3]
+            n = be.coursedetail(i[2])
+            print(n)
+            name = n[1]
+            grades.append((name, grade))
+        
+        # Populate table with grades
+        for row_idx, grade in enumerate(grades, start=1):
+            course_name_label = tk.Label(gwin, text=grade[0], font=('Helvetica', 12))
+            course_name_label.grid(row=row_idx, column=0, padx=10, pady=5)
+        
+            grade_label = tk.Label(gwin, text=grade[1], font=('Helvetica', 12))
+            grade_label.grid(row=row_idx, column=1, padx=10, pady=5)
     
     def show_all_data():
         all_data_window = tk.Toplevel(root)
