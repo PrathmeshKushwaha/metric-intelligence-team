@@ -63,10 +63,7 @@ S_id int,
 foreign key(S_id) references Student(S_id),
 T_id int,
 foreign key(T_id) references Teachers(T_id),
-Msg TEXT NOT NULL ,
-created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
-
-
+Msg TEXT NOT NULL);
 
 
 create table Assignment(
@@ -176,16 +173,19 @@ INSERT INTO LearningSpace (Ls_id, Title, C_id, Filedata) VALUES
 (337, 'unit-2', 773, 'D:/pdf/7.pdf');
 
 
-
-
 INSERT INTO Message (M_id, S_id, T_id, Msg)
 VALUES
+	(554, 992, 112, 'Welcome to Futurense'),
     (555, 992, 111, 'hhhhhcsdn mi jndsnck n ononnds n'),
     (556, 994, 112, 'kkshnlml cklmojm lkos'),
     (557, 994, 111, 'njkscsbkBKn m m kjnkjc b j kj s'),
     (558, 993, 113, 'kljlnlk;ncm jninbid'),
     (559, 993, 111, 'njcknnn kmkmkok noikndl');
 
+INSERT INTO Message (M_id, S_id, T_id, Msg)
+VALUES
+	(552, 991, 112, 'Welcome to Futurense'),
+    (553, 991, 111, 'You semster will start from 30th july!!!');
 
 
 INSERT INTO Assignment (A_id, A_name, C_id, Filedata)

@@ -149,7 +149,7 @@ class LoginApp:
         username = self.username_entry.get()
         password = self.password_entry.get()
         l = be.login(username)
-        self.user = l
+        self.user = list(l)
         if l:
             if password == l[2]:
                 messagebox.showinfo("Success", "Login Successful!")
@@ -262,7 +262,7 @@ class LoginApp:
                 course_title_label.pack()
 
                 # Get started button
-                get_started_button = tk.Button(course_frame, text="Get started", command=lambda: cs.create_dashboard(information[1],cd[1]))
+                get_started_button = tk.Button(course_frame, text="Get started", command=lambda cd=cd: cs.create_dashboard(information[1],cd[1]))
                 get_started_button.pack(pady=(5, 0))
                 if len(courses) == 0:
                     break
@@ -321,9 +321,107 @@ class LoginApp:
         self.notification_popup.geometry("500x350")
         self.notification_popup.configure(bg='white')
 
-        notification_label = tk.Label(self.notification_popup, text="You have new notifications!", bg='white')
-        notification_label.pack(pady=20)
+        # Create a canvas widget
+        canvas = tk.Canvas(self.notification_popup)
+        canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
+        # Add a vertical scrollbar to the canvas
+        scrollbar = ttk.Scrollbar(self.notification_popup, orient="vertical", command=canvas.yview)
+        scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        
+        # Configure the canvas
+        canvas.configure(yscrollcommand=scrollbar.set)
+        canvas.bind('<Configure>', lambda e: canvas.configure(scrollregion=canvas.bbox("all")))
+
+        # Create a frame inside the canvas
+        frame = tk.Frame(canvas)
+        
+        # Add the new frame to a window in the canvas
+        canvas.create_window((0, 0), window=frame, anchor="nw")
+        print(self.user[1])
+        mess = be.get_message(self.user[1])
+        print(mess)
+        if mess == []:
+            notification_label = tk.Label(canvas, text="You have no notifications!", bg='white')
+            notification_label.pack(pady=20)
+        for i in mess:
+            self.add_notification(frame, f"Teacher ID: {i[2]}",f"Student ID: {i[1]}", f"{i[3]}", f"Message ID: {i[0]}")
+            print("message" )
+
+    def add_notification(self, parent, teacher_id, student_id, message, message_id):
+        # Notification Frame
+        notification_frame = tk.Frame(parent, bg='lightgrey', bd=2, relief=tk.SOLID)
+        notification_frame.pack(padx=10, pady=10, fill=tk.X)
+        
+        # Top Frame for IDs
+        top_frame = tk.Frame(notification_frame, bg='lightgrey')
+        top_frame.pack(fill=tk.X, padx=5, pady=5)
+        
+        # Labels for Teacher ID and Student ID
+        teacher_id_label = tk.Label(top_frame, text=teacher_id, bg='lightgrey', anchor='w')
+        teacher_id_label.pack(side=tk.LEFT)
+        
+        student_id_label = tk.Label(top_frame, text=student_id, bg='lightgrey', anchor='w')
+        student_id_label.pack(side=tk.LEFT, padx=(10, 0))
+
+        message_id_label = tk.Label(top_frame, text=message_id, bg='lightgrey', anchor='w')
+        message_id_label.pack(side=tk.LEFT, padx=(10, 0))
+        
+        # Message Label
+        message_label = tk.Label(notification_frame, text=message, bg='lightgrey', anchor='w', justify=tk.LEFT, wraplength=280)
+        message_label.pack(padx=5, pady=10)
     
+    def grades(self):
+        gwin= tk.Tk()
+        gwin.title('Grade Page')
+        gwin.geometry('500x400')
+
+        f1 = tk.Frame(root)
+
+        name_label = tk.Label(f1, text='Name', font=('Arial', 12))
+        name_label.pack(side='left', padx=10)
+
+        name_entry = tk.Entry(f1, textvariable=name, width=30)
+        name_entry.pack(side='right')
+
+        f2 = tk.Frame(root)
+        f2.pack(pady=10)
+
+        subject_label = tk.Label(f2, text='Subject', font=('Arial', 12))
+        subject_label.pack(side='left', padx=10)
+
+        subject_entry = tk.Entry(f2, textvariable=subject, width=30)
+        subject_entry.pack(side='right')
+
+        f3 = tk.Frame(root)
+        f3.pack(pady=10)
+
+        grade_label = tk.Label(f3, text='Grade', font=('Arial', 12))
+        grade_label.pack(side='left', padx=10)
+
+        grade_entry = tk.Entry(f3, textvariable=grade, width=30)
+        grade_entry.pack(side='right')
+
+        submit_button = tk.Button(root, text='Submit', command=display_data, font=('Arial', 12))
+        submit_button.pack(pady=20)
+
+        bottom_frame = tk.Frame(root)
+        bottom_frame.pack(side='bottom', fill='x')
+
+        bottom_button = tk.Button(bottom_frame, text='Show All Data', bg='white', fg='black', font=('Arial', 12), command=show_all_data)
+        bottom_button.pack(side='right', padx=10, pady=10)
+    
+    def show_all_data():
+        all_data_window = tk.Toplevel(root)
+        all_data_window.title('All Stored Data')
+        all_data_window.geometry('300x200')
+
+        for i, data in enumerate(data_list):
+            tk.Label(all_data_window, text=f"Entry {i+1}", font=('Arial', 10, 'bold')).pack(pady=5)
+            tk.Label(all_data_window, text=f"Name: {data[0]}", font=('Arial', 10)).pack()
+            tk.Label(all_data_window, text=f"Subject: {data[1]}", font=('Arial', 10)).pack()
+            tk.Label(all_data_window, text=f"Grade: {data[2]}", font=('Arial', 10)).pack()
+            tk.Label(all_data_window, text="-"*20, font=('Arial', 10)).pack(pady=5)
     def on_closing(self):
         # Called when the main window is closing
         print("Closing main window...")
@@ -339,7 +437,7 @@ class LoginApp:
         current_window.destroy()
     
         root = tk.Tk()
-    
+     
         app = LoginApp(root, bg_image_path, form_image_path)
     
         root.mainloop()

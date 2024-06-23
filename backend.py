@@ -66,8 +66,15 @@ def coursedetail(C_id):
     result = cursor.fetchone()
     return result
 
+def get_message(s_id):
+    query = "SELECT * FROM Message WHERE S_id = %s"
+    cursor.execute(query, (s_id,))
+    result = cursor.fetchall()
+    return result
+
+
 # s = int(input())
-# info = coursenroll(s)
+# info = get_message(s)
 # print(info)
 
 # cursor.close()
