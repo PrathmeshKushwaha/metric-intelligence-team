@@ -161,10 +161,16 @@ where E_id = 1013;
 delete from Enrollement
 where E_id = 1019;
 
+
+
 INSERT INTO Enrollement (E_id, S_id, C_id) VALUES
 (1002, 996,771),
 (1006,996,772),
 (1013,996,774);
+
+
+
+
 
 INSERT INTO LearningSpace (Ls_id, Title, C_id, Filedata) VALUES
 (331, 'Unit-1', 772, 'D:/pdf/1.pdf'), 
@@ -178,6 +184,10 @@ INSERT INTO LearningSpace (Ls_id, Title, C_id, Filedata) VALUES
 
 
 
+
+
+
+
 INSERT INTO Message (M_id, S_id, T_id, Msg)
 VALUES
     (555, 992, 111, 'hhhhhcsdn mi jndsnck n ononnds n'),
@@ -185,6 +195,8 @@ VALUES
     (557, 994, 111, 'njkscsbkBKn m m kjnkjc b j kj s'),
     (558, 993, 113, 'kljlnlk;ncm jninbid'),
     (559, 993, 111, 'njcknnn kmkmkok noikndl');
+
+
 
 
 
