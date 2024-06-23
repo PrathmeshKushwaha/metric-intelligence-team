@@ -32,6 +32,18 @@ T_id int primary key,
 T_name varchar(30) not null);
 
 
+
+CREATE TABLE Grades (
+    G_id INT PRIMARY KEY,
+    S_id INT,
+    C_id INT,
+    Grade CHAR(2) NOT NULL,
+    FOREIGN KEY (S_id) REFERENCES Student(S_id),
+    FOREIGN KEY (C_id) REFERENCES Courses(C_id)
+);
+
+
+
 create table Courses(
 C_id int primary key,
 C_name varchar(50) not null unique,
@@ -145,6 +157,24 @@ INSERT INTO Enrollement (E_id, S_id, C_id) VALUES
 (1018, 993, 774),
 (1019, 994, 774),
 (1020, 995, 774);
+
+
+
+INSERT INTO Grades (G_id, S_id, C_id, Grade) VALUES
+(1, 991, 771, 'A'),
+(2, 991, 772, 'B+'),
+(3, 991, 773, 'A+'),
+(4, 992, 772, 'B'),
+(5, 992, 773, 'A'),
+(6, 992, 774, 'B+'),
+(7, 993, 771, 'B+'),
+(8, 993, 774, 'A'),
+(9, 994, 771, 'A'),
+(10, 994, 773, 'B+'),
+(11, 995, 774, 'A'),
+(12, 996, 771, 'A'),
+(13, 996, 772, 'B+'),
+(14, 996, 774, 'A');
 
 delete from Enrollement
 where E_id = 1002;
