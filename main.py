@@ -1,16 +1,10 @@
 import tkinter as tk
-
 from tkinter import ttk, messagebox
-
 from PIL import Image, ImageTk
-
 import os
-
 from itertools import cycle
-
-import backend as be
-
-import coursesection as cs
+import pyfiles.backend2 as be
+import pyfiles.coursesection as cs
 
 class EntryWithPlaceholder(tk.Entry):
     
@@ -19,42 +13,27 @@ class EntryWithPlaceholder(tk.Entry):
         super().__init__(master, *args, **kwargs)
     
         self.placeholder = placeholder
-    
         self.placeholder_color =  "grey"
-    
         self.default_fg_color =  self["fg"]
-    
         self.user =  []
-    
         self.bind("<FocusIn>", self._on_focus_in)
-    
         self.bind("<FocusOut>", self._on_focus_out)
-
-       
-       
         self.put_placeholder()
 
    
     def _on_focus_in(self, event):
-   
         if self.get() == self.placeholder:
-   
             self.delete(0, tk.END)
-   
             self.config(fg=self.default_fg_color)
 
    
     def _on_focus_out(self, event):
-   
         if not self.get():
-   
             self.put_placeholder()
 
     
     def put_placeholder(self):
-    
         self.insert(0, self.placeholder)
-    
         self.config(fg=self.placeholder_color)
 
 
@@ -87,8 +66,6 @@ class LoginApp:
         self.root.protocol("WM_DELETE_WINDOW", self.on_closing)
         print("Protocol for WM_DELETE_WINDOW is set")
         
-        
-        
     def load_image(self, path, size):
         if os.path.exists(path):
             image = Image.open(path)
@@ -97,8 +74,6 @@ class LoginApp:
         else:
             print(f"Image not found: {path}")
             return None
-
-
 
     def create_login_form(self):
         form_frame = tk.Frame(self.right_frame, bg='white', padx=20, pady=20)
@@ -129,12 +104,6 @@ class LoginApp:
         # Password entry
         self.password_entry = EntryWithPlaceholder(password_frame, placeholder="Password", width=30, font=("Helvetica", 12), show="*", bd=1)
         self.password_entry.grid(row=0, column=0, sticky="ew")
-
-        # Remember username checkbox
-        # remember_var = tk.IntVar()
-        # remember_check = tk.Checkbutton(form_frame, text="Remember username", variable=remember_var, bg='white')
-        # remember_check.grid(row=5, column=0, columnspan=2, pady=5, sticky='w')
-
         # Login button
         style = ttk.Style()
         style.configure("TButton", padding=6, relief="flat", background="black", foreground="black")
@@ -223,8 +192,6 @@ class LoginApp:
         bell_icon = tk.Label(top_frame, text="🔔", font=("Arial", 24), cursor="hand2", bg='#F5F5F5')
         bell_icon.pack(side='right', padx=20)
         bell_icon.bind("<Button-1>", lambda e: self.notifications())
-
-        
 
         # User name label
         user_name_label = tk.Label(top_frame, text=information[1], font=("Helvetica", 16), bg='#F5F5F5')
@@ -401,17 +368,6 @@ class LoginApp:
             grade_label = tk.Label(gwin, text=grade[1], font=('Helvetica', 12))
             grade_label.grid(row=row_idx, column=1, padx=10, pady=5)
     
-    def show_all_data():
-        all_data_window = tk.Toplevel(root)
-        all_data_window.title('All Stored Data')
-        all_data_window.geometry('300x200')
-
-        for i, data in enumerate(data_list):
-            tk.Label(all_data_window, text=f"Entry {i+1}", font=('Arial', 10, 'bold')).pack(pady=5)
-            tk.Label(all_data_window, text=f"Name: {data[0]}", font=('Arial', 10)).pack()
-            tk.Label(all_data_window, text=f"Subject: {data[1]}", font=('Arial', 10)).pack()
-            tk.Label(all_data_window, text=f"Grade: {data[2]}", font=('Arial', 10)).pack()
-            tk.Label(all_data_window, text="-"*20, font=('Arial', 10)).pack(pady=5)
     def on_closing(self):
         # Called when the main window is closing
         print("Closing main window...")
@@ -423,26 +379,17 @@ class LoginApp:
             self.root.destroy()
     
     def back_to_login(self, current_window):
-    
         current_window.destroy()
-    
         root = tk.Tk()
-     
         app = LoginApp(root, bg_image_path, form_image_path)
-    
         root.mainloop()
 
 
 if __name__ == "__main__":
-
     # Provide the correct paths to your images
-
     bg_image_path = r"images/main.png"  # Correct the file path
-
     form_image_path = r"images/c6.jpeg"  # Provide the correct path to the form image
 
     root = tk.Tk()
-
     app = LoginApp(root, bg_image_path, form_image_path)
-
     root.mainloop()
