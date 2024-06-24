@@ -2,7 +2,6 @@ create database futurense;
 use futurense;
 
 
-
 create table Student(
 S_id int Primary key,
 S_name varchar(30) not null,
