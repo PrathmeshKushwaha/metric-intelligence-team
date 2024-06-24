@@ -1,4 +1,4 @@
-📚 Futurense LMS Project
+📚 Futurense LMS Project!!
 - Welcome to the Futurense Learning Management System (LMS) project repository! This project integrates both front-end and back-end components with a comprehensive database setup. Below, you'll find an overview of the project structure, setup instructions, and how to run the main program.
 
 
