@@ -3,6 +3,7 @@
 
 
 
+
 🌟 Project Overview
 - Futurense LMS is a comprehensive learning management system designed to facilitate efficient management of educational resources and activities. The system has the following key features:
 - Login Page: Users are authenticated through a secure login page to access the system.
