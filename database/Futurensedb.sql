@@ -104,6 +104,9 @@ INSERT INTO Login (L_id, S_id, Password) VALUES
 (12315138, 994, 'abcdh'),
 (12315139, 995, 'abcdi');
 
+INSERT INTO Student VALUES (12315140,996,'abcdt');
+
+
 
 
 INSERT INTO Teachers (T_id, T_name) VALUES
