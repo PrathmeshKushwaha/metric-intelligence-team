@@ -1,5 +1,4 @@
-
- 🚚 Delhivery Extended EDA Report
+# 🚚 Delhivery Extended EDA Report
 
 ## Introduction
 Welcome to the extended Delhivery EDA (Exploratory Data Analysis) report! This document dives deeper into our analysis of the Delhivery logistics dataset, focusing on detailed variables related to trip management and delivery performance.
@@ -48,7 +47,3 @@ Based on our detailed analysis, we recommend the following strategies to optimiz
 
 ## Conclusion 🎯
 This extended EDA report provides comprehensive insights into Delhivery's logistics operations, highlighting detailed variables and their impact on delivery performance. By leveraging these findings, Delhivery can enhance operational efficiency and customer satisfaction.
-
----
-
-Feel free to adapt this report further to include any additional insights or specific recommendations based on your analysis of the Delhivery dataset. This structured approach with emojis will help communicate key findings effectively to stakeholders.
