@@ -4,8 +4,7 @@
 👋 Welcome to the Metric Intelligence Team project repository! This collaborative effort focuses on two key components: Delhivery EDA (Exploratory Data Analysis) and Futurense LMS Clone. Each part serves a distinct purpose in analyzing logistics data and replicating a Learning Management System.
 
 Project Structure:
--------------------
-1. Delhivery EDA (Exploratory Data Analysis)
+ 1. Delhivery EDA (Exploratory Data Analysis)
    - 📈 Focuses on analyzing the Delhivery logistics dataset.
    - 🧐 Extracts insights into trip management and delivery performance.
 
@@ -34,6 +33,8 @@ Project Structure:
    - 🐍 Python with Tkinter for frontend and backend development.
    - 🐘 SQLite for database management.
 
+
+-------------------
 
 🌟 **Thank you for exploring our project!** We're passionate college students dedicated to leveraging data analysis and software development skills in the Metric Intelligence Team project. Your feedback and contributions are highly valued as we continue to enhance our solutions and explore new frontiers in logistics analytics and educational technologies.
 
