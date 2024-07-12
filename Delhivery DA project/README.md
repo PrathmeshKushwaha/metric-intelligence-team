@@ -3,6 +3,7 @@
 💎Introduction
 Welcome to the extended Delhivery EDA (Exploratory Data Analysis) report! This document dives deeper into our analysis of the Delhivery logistics dataset, focusing on detailed variables related to trip management and delivery performance.
 
+
 ✔️ Dataset Overview 
 - Source: Kaggle-Delhivery Logistics Dataset
 - Variables Analyzed:
