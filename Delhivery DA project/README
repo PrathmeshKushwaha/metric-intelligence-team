@@ -1,9 +1,9 @@
-# 🚚 Delhivery Extended EDA Report
+🚚 Delhivery Extended EDA Report
 
-## Introduction
+💎Introduction
 Welcome to the extended Delhivery EDA (Exploratory Data Analysis) report! This document dives deeper into our analysis of the Delhivery logistics dataset, focusing on detailed variables related to trip management and delivery performance.
 
-## Dataset Overview
+✔️ Dataset Overview
 - **Source:** Delhivery Logistics Dataset
 - **Variables Analyzed:**
   - **source_name:** Name of the trip origin source.
@@ -23,7 +23,7 @@ Welcome to the extended Delhivery EDA (Exploratory Data Analysis) report! This d
   - **segment_osrm_distance:** OSRM-calculated distance for subsets of the package delivery.
   - **segment_factor:** Unknown field related to segments.
 
-## Exploratory Data Analysis (EDA)
+⌨️Exploratory Data Analysis (EDA)
 ### Key Findings 📊
 - **Time Analysis:** Distribution and trends in trip start and end times.
 - **Delivery Efficiency:** Relationship between actual delivery time and OSRM-calculated time.
