@@ -1,10 +1,13 @@
 🚚 Delhivery EDA Report!!
 
+
 💎Introduction
 - Welcome to the extended Delhivery EDA (Exploratory Data Analysis) report! This document dives deeper into our analysis of the Delhivery logistics dataset, focusing on detailed variables related to trip management and delivery performance.
 
 
+
 ✔️ Dataset Overview 
+
 - Source: Kaggle-Delhivery Logistics Dataset
 - Variables Analyzed:
   - source_name: Name of the trip origin source.
@@ -23,21 +26,28 @@
   - segment_osrm_distance: OSRM-calculated distance for subsets of the package delivery.
   - segment_factor: Field related to segments.
 
+
+
 ⌨️Exploratory Data Analysis (EDA)
  Key Findings 📊
 - Time Analysis: Distribution and trends in trip start and end times.
 - Delivery Efficiency: Relationship between actual delivery time and OSRM-calculated time.
 - Distance Metrics: Analysis of actual vs. OSRM-calculated distances.
 
+
+
 📈 Visualizations 
 - Time Series Plots: Trends in trip start and end times.
 - Scatter Plots: Correlation between actual delivery time and OSRM-calculated time.
 - Histograms: Distribution of distances and delivery times.
 
+
+
 🧐 Insights 
 - Peak delivery times coincide with specific events or periods.
 - Discrepancies between actual and OSRM-calculated times suggest potential inefficiencies.
 - Factors impacting delivery efficiency include various operational variables.
+
 
 🚀 Recommendations 
 - Based on our detailed analysis, we recommend the following strategies to optimize Delhivery's logistics operations:
@@ -45,5 +55,16 @@
 - Implement real-time tracking systems for route optimization.
 - Explore machine learning models for predictive delivery time estimation.
 
+
+
 🎯 Conclusion 
 - This extended EDA report provides comprehensive insights into Delhivery's logistics operations, highlighting detailed variables and their impact on delivery performance. By leveraging these findings, Delhivery can enhance operational efficiency and customer satisfaction.
+
+
+
+
+
+
+
+
+
